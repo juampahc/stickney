@@ -1,0 +1,10 @@
+exceptiongroup==1.2.0
+fire==0.5.0
+python-multipart==0.0.6
+requests==2.31.0
+supervisor==4.2.5
+termcolor==2.4.0
+typing_extensions==4.9.0
+unoserver==2.0.1
+urllib3==2.1.0
+uvicorn==0.25.0
