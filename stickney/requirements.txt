@@ -1,0 +1,10 @@
+exceptiongroup==1.2.0
+fire==0.5.0
+python-multipart==0.0.20
+supervisor==4.2.5
+ffmpy==0.5.0
+gradio==5.16.0
+gradio_client==1.7.0
+pandas==2.2.3
+python-dateutil==2.9.0.post0
+pydantic-settings==2.7.0

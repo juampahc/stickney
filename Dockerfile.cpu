@@ -1,0 +1,20 @@
+FROM juampahc/vllm-cpu-env:latest
+
+COPY stickney/* /workspace/stickney/
+COPY supervisord.conf /workspace/supervisord.conf
+
+# Make executables
+RUN chmod +x /workspace/stickney/start-vllm.sh
+RUN chmod +x /workspace/stickney/start-gradio.sh
+
+RUN pip install --no-cache-dir -r stickney/requirements.txt
+
+# Expose the port
+# - 8000 VLLM
+# - 7860 Gradio
+# - 9000 Administrator
+EXPOSE 8000
+EXPOSE 7860
+EXPOSE 9000
+
+ENTRYPOINT [ "supervisord", "-c", "./supervisord.conf" ]

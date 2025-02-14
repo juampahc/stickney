@@ -26,11 +26,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         
-      - name: Build and push
+      - name: Build and push (CPU)
         uses: docker/build-push-action@v6
         with:
           push: true
-          file: ./Dockerfile
+          file: ./Dockerfile.cpu
           tags: |
-            juampahc/skyresh:v1.0
-            juampahc/skyresh:latest
+            juampahc/stickney-cpu:v1.0
+            juampahc/stickney-cpu:latest
