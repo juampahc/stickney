@@ -26,21 +26,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
         
-      - name: Build and push (CPU)
+      - name: Build and push (GPU)
         uses: docker/build-push-action@v6
         with:
           push: true
-          file: ./Dockerfile.cpu
+          file: ./Dockerfile.gpu
           tags: |
-            juampahc/stickney-cpu:v1.0
-            juampahc/stickney-cpu:latest
-      
-      - name: Build and push (CPUZ)
-        uses: docker/build-push-action@v6
-        with:
-          push: true
-          file: ./Dockerfile.cpuz
-          tags: |
-            juampahc/stickney-cpuz:v1.0
-            juampahc/stickney-cpuz:latest
-
+            juampahc/stickney-gpu:v1.0
+            juampahc/stickney-gpu:latest
