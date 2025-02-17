@@ -12,7 +12,7 @@ While it is true that VLLM does not support model parallelism like other options
 
 This project is intended to be used as a tool to deploy a set of models by using a `hub-repository` either custom or public, like [HuggingFace](https://huggingface.co/models). It allows quick testing reducing the need of creating more than one artifact's replicas. It can still be used in production, but as said earlier: this will not allow model parallelism: all users will have access to the same model.
 
-IMPORTANT: Performance issues may arise, specially in CPU when assignment of cores is needed.
+IMPORTANT: Performance issues may arise, specially in CPU scenarios where of cores is needed.
 
 - For CPU features please check: [https://docs.vllm.ai/en/stable/getting_started/installation/cpu/index.html#supported-features](https://docs.vllm.ai/en/stable/getting_started/installation/cpu/index.html#supported-features)
 - For the VLLM list of supported models please check: [https://docs.vllm.ai/en/stable/models/supported_models.html#list-of-text-only-language-models](https://docs.vllm.ai/en/stable/models/supported_models.html#list-of-text-only-language-models)
@@ -57,3 +57,8 @@ API_KEY='helloworld'
 MODEL_ID='Qwen/Qwen2.5-0.5B-Instruct'
 ```
 
+Note that there is also a cpu image with AVX512 ISA disabled in case support of them is absent in your processor:
+
+```bash
+docker run -it --rm -p 8000:8000 -p 7860:7860 -e RUN_GRADIO='true' -e API_KEY='EMPTY' juampahc/stickney-cpuz:latest
+```
