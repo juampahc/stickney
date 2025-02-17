@@ -1,11 +1,11 @@
-FROM juampahc/vllm-cpu-env:v0.7.2
+FROM vllm/vllm-openai:v0.7.2
 
-COPY stickney/* /workspace/stickney/
-COPY supervisord.conf /workspace/supervisord.conf
+COPY stickney/* /vllm-workspace/stickney/
+COPY supervisord-gpu.conf /vllm-workspace/supervisord.conf
 
 # Make executables
-RUN chmod +x /workspace/stickney/start-vllm.sh
-RUN chmod +x /workspace/stickney/start-gradio.sh
+RUN chmod +x /vllm-workspace/stickney/start-vllm.sh
+RUN chmod +x /vllm-workspace/stickney/start-gradio.sh
 
 RUN pip install --no-cache-dir -r stickney/requirements.txt
 
