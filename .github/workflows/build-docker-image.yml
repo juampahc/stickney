@@ -44,11 +44,3 @@ jobs:
             juampahc/stickney-cpuz:v1.0
             juampahc/stickney-cpuz:latest
 
-      - name: Build and push (GPU)
-        uses: docker/build-push-action@v6
-        with:
-          push: true
-          file: ./Dockerfile.gpu
-          tags: |
-            juampahc/stickney-gpu:v1.0
-            juampahc/stickney-gpu:latest
