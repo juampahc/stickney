@@ -25,14 +25,16 @@ if [ -z "$API_KEY" ]; then
   fi
 fi
 
-# For MODEL_ID: check environment first, then file, then default.
-if [ -z "$MODEL_ID" ]; then
-  if [ -f "$ENV_FILE" ]; then
-    MODEL_ID=$(extract_value "MODEL_ID" "$ENV_FILE")
-  fi
-  if [ -z "$MODEL_ID" ]; then
-    MODEL_ID="Qwen/Qwen2.5-0.5B-Instruct"
-  fi
+# For MODEL_ID: check file first, then environment, then default.
+# By default we will always look in the .env file, that's where the administrator
+# will write the model_id. 
+# In order to handle configuration through environment variables we try to load
+# only if .env file is not present
+
+if [ -f "$ENV_FILE" ]; then
+  MODEL_ID=$(extract_value "MODEL_ID" "$ENV_FILE")
+elif [ -z "$MODEL_ID" ]; then
+  MODEL_ID="Qwen/Qwen2.5-0.5B-Instruct"
 fi
 
 # Output the final values

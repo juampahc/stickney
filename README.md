@@ -62,3 +62,5 @@ Note that there is also a cpu image with AVX512 ISA disabled in case support of 
 ```bash
 docker run -it --rm -p 8000:8000 -p 7860:7860 -e RUN_GRADIO='true' -e API_KEY='EMPTY' juampahc/stickney-cpuz:latest
 ```
+
+For using minIO as an s3 privisioner we first need to install an CSI driver comptaible with s3. I will use ...
