@@ -8,6 +8,9 @@ if [ ! -f "$ENV_FILE" ]; then
   echo "Warning: $ENV_FILE not found. Defaults will be used if environment variables are missing."
 fi
 
+# Log arguments from container:
+echo "Launching vLMM with the following arguments from container: $@"
+
 # Helper function to extract a key's value from the env file. It strips surrounding quotes if present.
 extract_value() {
   local key="$1"
@@ -44,10 +47,10 @@ echo "Using MODEL_ID: $MODEL_ID"
 # Check if we need to start with api_key
 if [ "$API_KEY" == "EMPTY" ]; then
     echo "API_KEY is <EMPTY>, no api key will be used"
-    exec vllm serve $MODEL_ID
+    exec vllm serve $MODEL_ID "$@"
 else
     echo "API key is not <EMPTY> setting api_key for vllm"
     # we exit 0 so supervisor does not crash
-    exec vllm serve $MODEL_ID --api-key $API_KEY
+    exec vllm serve $MODEL_ID --api-key $API_KEY "$@"
 fi
 

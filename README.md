@@ -57,6 +57,14 @@ API_KEY='helloworld'
 MODEL_ID='Qwen/Qwen2.5-0.5B-Instruct'
 ```
 
+Feel free to pass the required arguments to vllm with the run command:
+
+```bash
+docker run -it --rm -p 8000:8000 -p 7860:7860 -e RUN_GRADIO='true' -e API_KEY='EMPTY' juampahc/stickney-cpu:latest --task=generate
+```
+
+For more information about the arguments, check the [docs](https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#cli-reference).
+
 Note that there is also a cpu image with AVX512 ISA disabled in case support of them is absent in your processor:
 
 ```bash

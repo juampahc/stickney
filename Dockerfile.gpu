@@ -1,11 +1,17 @@
 FROM vllm/vllm-openai:v0.7.2
 
+RUN --mount=type=cache,target=/var/cache/apt \
+    apt-get update -y \
+    && apt-get install -y gettext-base moreutils
+
 COPY stickney/* /vllm-workspace/stickney/
 COPY supervisord-gpu.conf /vllm-workspace/supervisord.conf
+COPY entrypoint-gpu.sh /vllm-workspace/entrypoint.sh
 
 # Make executables
 RUN chmod +x /vllm-workspace/stickney/start-vllm.sh
 RUN chmod +x /vllm-workspace/stickney/start-gradio.sh
+RUN chmod +x /vllm-workspace/entrypoint.sh
 
 RUN pip install --no-cache-dir -r stickney/requirements.txt
 
@@ -17,4 +23,4 @@ EXPOSE 8000
 EXPOSE 7860
 EXPOSE 9000
 
-ENTRYPOINT [ "supervisord", "-c", "./supervisord.conf" ]
+ENTRYPOINT [ "./entrypoint.sh" ]
