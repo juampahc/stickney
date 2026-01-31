@@ -1,5 +1,10 @@
 # Stickney
 
+### IMPORTANT UPDATE
+
+This repo needs to be updated to be compatible with the most recent features of vLLM. For now, consider using Zero-Reload Model Switching: https://blog.vllm.ai/2025/10/26/sleep-mode.html
+
+
 This repo contains the code for both containerization and deployment of a vLLM instance, it is part of a larger personal project.
 
 The main goal of this repo is to provide 3 basic features over the standard deployment with VLLM´s base docker image:
